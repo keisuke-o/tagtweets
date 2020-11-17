@@ -1,4 +1,6 @@
 class Tag < ApplicationRecord
-  belongs_to :tweet
-  belongs_to :tag
+  has_many :tweet_tag_relations
+  has_many :tweets, through: :tweet_tag_relations
+
+  validates :name, uniqueness: true
 end
